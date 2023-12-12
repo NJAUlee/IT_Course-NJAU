@@ -5,10 +5,12 @@ memory = init_memory()
 my_model = unitModel()
 
 while True:
-    user_question = input("你想说点什么(输入'退出'，即可关闭对话)：")
-    question(memory=memory, quest=user_question)
-    if user_question == '退出':
+    user_Question = input("你想说点什么(输入'退出'，即可关闭对话)：")
+    question(memory=memory, quest=user_Question)
+    if user_Question == '退出':
         print("对话已关闭！")
         break
     else:
-        answer(memory=memory, ans=my_model.respond('ERNIE-Bot', input=memory))
+        llm_Answer = my_model.respond('ERNIE-Bot', input=memory)
+        answer(memory=memory, ans=llm_Answer)
+        print(llm_Answer)

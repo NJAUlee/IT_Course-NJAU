@@ -26,5 +26,4 @@ def question(quest='', memory=[]):
 def answer(ans='', memory=[]):
     the_answer = {"role": "assistant", "content": ans}
     memory = memory.append(the_answer)
-    print(ans)
     return memory
