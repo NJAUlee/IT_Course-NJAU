@@ -3,12 +3,12 @@ import requests
 import json
 import os
 
-os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-os.path.abspath(os.path.dirname(os.getcwd()))
-db_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "..")), "role_Prompt.txt")
-
-with open(db_path, "r") as f:
-    role_Prompt = f.readline()
+# os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+# os.path.abspath(os.path.dirname(os.getcwd()))
+# prompt_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "..")), "role_Prompt.txt")
+#
+# with open(prompt_path, "r") as f:
+#     role_Prompt = f.readline()
 
 
 class unitModel(object):
@@ -28,10 +28,10 @@ class unitModel(object):
         response = requests.request("POST", url, headers=headers, data=payload)
         return response.json().get("access_token")
 
-    def respond(self, model_name, prompt='', unit_input=''):
+    def respond(self, model_name, prompt='', input=''):
         model_name = model_name
         prompt = prompt
-        unit_input = unit_input
+        input = input
         # content = prompt + unit_input
 
         # url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant?access_token=" + unitModel.get_access_token(self)
@@ -53,36 +53,7 @@ class unitModel(object):
                 self)
 
         payload = json.dumps({
-            "messages": [
-                {
-                    "role": "user",
-                    "content": role_Prompt
-                },
-                {
-                    "role": "assistant",
-                    "content": "你好，我是丁真珍珠，妈妈生的。"
-                },
-                {
-                    "role": "user",
-                    "content": "你喜欢抽烟吗？"
-                },
-                {
-                    "role": "assistant",
-                    "content": "我喜欢抽瑞克五代电子烟，扎西德勒。"
-                },
-                {
-                    "role": "user",
-                    "content": "你什么喜欢抽电子烟？"
-                },
-                {
-                    "role": "assistant",
-                    "content": "电子烟抽起来劲大，小孩子不懂事抽着玩的。雪豹闭嘴！"
-                },
-                {
-                    "role": "user",
-                    "content": unit_input
-                }
-            ],
+            "messages": input,
             "temperature": 0.6,
             "top_p": 0.8,
             "penalty_score": 1
