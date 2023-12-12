@@ -1,5 +1,6 @@
 from LLM_api import unitModel
 from multiple_Requests import init_memory,question,answer
+from voice_express import text2voice
 
 memory = init_memory()
 my_model = unitModel()
@@ -12,5 +13,6 @@ while True:
         break
     else:
         llm_Answer = my_model.respond('ERNIE-Bot', input=memory)
+        text2voice(llm_Answer)
         answer(memory=memory, ans=llm_Answer)
         print(llm_Answer)
