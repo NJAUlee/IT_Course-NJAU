@@ -1,6 +1,7 @@
 from LLM_api import unitModel
-from multiple_Requests import init_memory,question,answer
+from multiple_Requests import init_memory, question, answer
 from voice_express import text2voice
+from intention_Recognition import recognition, contains_word_no
 
 memory = init_memory()
 my_model = unitModel()
@@ -16,3 +17,10 @@ while True:
         text2voice(llm_Answer)
         answer(memory=memory, ans=llm_Answer)
         print(llm_Answer)
+        judge = recognition(llm_Answer)
+        print("建议是否成功：" + judge)
+        if contains_word_no(judge):
+            continue
+        else:
+            print("你成功说服了丁真！")
+            break
