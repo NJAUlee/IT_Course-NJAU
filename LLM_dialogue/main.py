@@ -19,7 +19,7 @@ while True:
         print(llm_Answer)
         judge = recognition(llm_Answer)
         print("建议是否成功：" + judge)
-        if contains_word_no(judge):
+        if contains_word_no('文本：'+judge):
             continue
         else:
             print("你成功说服了丁真！")
