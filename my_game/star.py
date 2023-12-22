@@ -41,7 +41,7 @@ while running:
                     break
                 else:
                     llm_Answer = my_model.respond(model_name='ERNIE-Bot', input=memory)
-                    #text2voice(llm_Answer)
+                    text2voice(llm_Answer)
                     multiple_Requests.answer(memory=memory, ans=llm_Answer)
                     text.result = llm_Answer
                     print(llm_Answer)
