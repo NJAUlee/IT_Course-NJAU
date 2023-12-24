@@ -1,6 +1,10 @@
 from gradio_client import Client
 import shutil
+import sys,os
 
+sys.path.append(os.path.split(sys.path[0])[0])
+path = os.path.split(sys.path[0])[0]
+print(os.path.split(sys.path[0])[0])
 
 def text2voice(text):
     client = Client("https://www.modelscope.cn/api/v1/studio/MiDd1Eye/DZ-Bert-VITS2/gradio/")
@@ -18,7 +22,7 @@ def text2voice(text):
     audio_file_path = result[1]
 
     # 保存音频的目标路径
-    destination_path = '/Users/lihao/Desktop/audio.wav'
+    destination_path = path + '/my_game/sound/audio.wav'
 
     # 复制文件到新位置
     shutil.copy(audio_file_path, destination_path)
