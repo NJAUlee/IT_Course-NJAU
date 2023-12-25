@@ -36,7 +36,10 @@ running = True
 #loop
 while running:
     if show_init:
-        draw_init()
+        close = draw_init()
+        if close:
+            break
+        #x -> close
         show_init = False
 
     clock.tick(FPS)
