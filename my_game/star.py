@@ -8,7 +8,7 @@ from LLM_dialogue import LLM_api
 from LLM_dialogue import multiple_Requests
 from LLM_dialogue import intention_Recognition
 from voice_express import text2voice
-from persuading import *
+from my_game.persuading import *
 
 # 模型初始化
 memory = multiple_Requests.init_memory()
